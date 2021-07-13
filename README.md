@@ -14,3 +14,9 @@ Windows :
 set FLASK_ENV=development
 set FLASK_APP=src
 flask run
+
+
+Create db
+(in venv, at cash-register level)
+from src import db, create_app
+db.create_all(app=create_app()) # pass the create_app result so Flask-SQLAlchemy gets the configuration.
