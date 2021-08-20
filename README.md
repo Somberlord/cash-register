@@ -2,7 +2,7 @@
 Python web cash register software
 
 Preparing venv
-pip install flask flask-sqlalchemy flask-login
+pip install flask flask-sqlalchemy flask-login flask-user flask-babelex email_validator
 
 Using bulma
 Download bulma sources in src/bulma folder
@@ -19,4 +19,10 @@ flask run
 Create db
 (in venv, at cash-register level)
 from src import db, create_app
-db.create_all(app=create_app()) # pass the create_app result so Flask-SQLAlchemy gets the configuration.
+db.create_all(app=create_app())
+# pass the create_app result so Flask-SQLAlchemy gets the configuration.
+
+
+pybabel extract -F src/babel.cfg -o src/translations/messages.pot src
+pybabel init -i src/translations/messages.pot -d src/translations -l fr
+pybabel compile -d src/translations -f
